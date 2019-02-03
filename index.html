@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-3.3.1.min.js"></script>
+
+</head>
+<body>
+
+<button>Get JSON data</button>
+
+<div></div>
+
+</body>
+<script>
+    $(document).ready(function(){
+      $("button").click(function(){
+    
+    
+        $.ajax({
+                   
+            url:   'smsjson.json',
+             dataType:  'json',
+            type:  'get',
+            cache:false,
+            success:  function (data) {
+                   // $(data.inicio).html(response);
+                   console.log(data);
+    
+                
+                  // alert(data.inicio.uno);
+            }
+    });
+    
+    
+    
+    
+    
+      });
+    });
+    </script>
+
+
+</html>
