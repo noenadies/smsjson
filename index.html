@@ -19,6 +19,7 @@
 
 <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
 <script>
+    var msnfire;
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyDFr709BqeySGzt63KugXZ9cCpC-8V5qY4",
@@ -41,6 +42,7 @@
 
 firebase.database().ref().child("smscandidato1").on('value', function(snapshot) {
     document.getElementById("idpmsn").innerHTML=snapshot.val();
+    msnfire=snapshot.val();;
 for(var i in snapshot){
 //console.log(snapshot.val);
 }
@@ -119,16 +121,22 @@ if(vw>=660){
  else{
     vllamar=true;
      for(var i  in  eljs){
+stacu=stacu+eljs[i].telefono
+//console.log(eljs[i].telefono);
+llamar(String(msnfire),eljs[i].telefono);
 
-console.log(eljs[i].telefono);
+}
+document.getElementById("idpmsn").innerHTML=stacu+"<br>"+ msnfire;
 
-}alert("se envio");
- }        alert(vw);
+
+
+ }       
     }
 var idx=0;
+var stacu="";
     function llamar(tstxmsn,telnum){
-        if(eljs[idx].telefono ==0){
-            eljs[idx].telefono;
+        if(true){
+           // eljs[idx].telefono;
             setTimeout(function(){ Android.showToast("enviarmsnya",tstxmsn,telnum); }, 100);
         }
 
