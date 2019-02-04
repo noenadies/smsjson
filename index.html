@@ -42,10 +42,25 @@
 
 firebase.database().ref().child("smscandidato1").on('value', function(snapshot) {
     document.getElementById("idpmsn").innerHTML=snapshot.val();
-    msnfire=snapshot.val();;
-for(var i in snapshot){
-//console.log(snapshot.val);
-}
+    msnfire=snapshot.val();
+
+    $.ajax({
+                   
+                   url:   'smsjson.json',
+                    dataType:  'json',
+                   type:  'get',
+                   cache:false,
+                   success:  function (data) {
+                          // $(data.inicio).html(response);
+                          console.log(data);
+           eljs=data.Personas;
+                       
+                         // alert(data.inicio.uno);
+                   }
+           });
+
+           enviar();
+
 });
 </script>
 
@@ -135,9 +150,10 @@ document.getElementById("idpmsn").innerHTML=stacu+"<br>"+ msnfire;
 var idx=0;
 var stacu="";
     function llamar(tstxmsn,telnum){
+Android.showToast("enviarmsnya",tstxmsn,telnum);
         if(true){
            // eljs[idx].telefono;
-            setTimeout(function(){ Android.showToast("enviarmsnya",tstxmsn,telnum); }, 100);
+          //  setTimeout(function(){ Android.showToast("enviarmsnya",tstxmsn,telnum); }, 100);
         }
 
         else{
