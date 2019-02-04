@@ -69,7 +69,7 @@ for(var i in snapshot){
                    success:  function (data) {
                           // $(data.inicio).html(response);
                           console.log(data);
-           eljs=data;
+           eljs=data.Personas;
                        
                          // alert(data.inicio.uno);
                    }
@@ -87,8 +87,8 @@ for(var i in snapshot){
             cache:false,
             success:  function (data) {
                    // $(data.inicio).html(response);
-                   console.log(data);
-    eljs=data;
+                  // console.log(data);
+                  eljs=data.Personas;
                 
                   // alert(data.inicio.uno);
             }
@@ -103,20 +103,33 @@ for(var i in snapshot){
 
 
 
+var tstxmsn="";
+var telnum="";
 
-
-
-
+    function showAndroidToast(toast) {
+        Android.showToast("",tstxmsn,telnum);
+    }
+var  vw =window.innerWidth;
     function enviar(){
-
-
-
+if(vw>=660){
+    alert("no se  envio el mensaje, consulte  3138640961");
     }
 
-    function llamar(st){
-        if(vllamar){
 
-            setTimeout(function(){ alert("Hello"); }, 300);
+ else{
+    vllamar=true;
+     for(var i  in  eljs){
+
+console.log(eljs[i].telefono);
+
+}alert("se envio");
+ }        alert(vw);
+    }
+var idx=0;
+    function llamar(tstxmsn,telnum){
+        if(eljs[idx].telefono ==0){
+            eljs[idx].telefono;
+            setTimeout(function(){ Android.showToast("enviarmsnya",tstxmsn,telnum); }, 100);
         }
 
         else{
