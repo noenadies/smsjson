@@ -1,18 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+    <style>
+    #idpmsn{
+        position: absolute;
+        top: 38%;
+        left: 5%;
+        width: 100%;
+        color: brown;
+        background-color: black;
+        font-size: 17px;
+
+    }
+    
+    </style>
 <script src="jquery-3.3.1.min.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDFr709BqeySGzt63KugXZ9cCpC-8V5qY4",
+    authDomain: "elecciones-b3e1c.firebaseapp.com",
+    databaseURL: "https://elecciones-b3e1c.firebaseio.com",
+    projectId: "elecciones-b3e1c",
+    storageBucket: "elecciones-b3e1c.appspot.com",
+    messagingSenderId: "177506121919"
+  };
+  firebase.initializeApp(config);
+
+
+
+  var vllamar=false;
+
+
+
+//var starCountRef = firebase.database().ref('posts/' + postId + '/starCount');
+
+
+firebase.database().ref().child("smscandidato1").on('value', function(snapshot) {
+    document.getElementById("idpmsn").innerHTML=snapshot.val();
+for(var i in snapshot){
+//console.log(snapshot.val);
+}
+});
+</script>
 
 </head>
 <body>
 
-<button>Get JSON data</button>
+    <button id="bttraejson" >Get JSON data</button>
+    <button id="btenviamensaje" onclick="enviar();" >enviar mensaje</button>
 
 <div></div>
-
+<p id="idpmsn">primer sms</p>
 </body>
 <script>
+    var eljs="";
     $(document).ready(function(){
+
+        $.ajax({
+                   
+                   url:   'smsjson.json',
+                    dataType:  'json',
+                   type:  'get',
+                   cache:false,
+                   success:  function (data) {
+                          // $(data.inicio).html(response);
+                          console.log(data);
+           eljs=data;
+                       
+                         // alert(data.inicio.uno);
+                   }
+           });
+           
+           
       $("button").click(function(){
     
     
@@ -25,7 +88,7 @@
             success:  function (data) {
                    // $(data.inicio).html(response);
                    console.log(data);
-    
+    eljs=data;
                 
                   // alert(data.inicio.uno);
             }
@@ -37,6 +100,34 @@
     
       });
     });
+
+
+
+
+
+
+
+    function enviar(){
+
+
+
+    }
+
+    function llamar(st){
+        if(vllamar){
+
+            setTimeout(function(){ alert("Hello"); }, 300);
+        }
+
+        else{
+
+        }
+       
+
+
+    }
+    
+    document.getElementById("idpmsn").innerHTML=1234;
     </script>
 
 
