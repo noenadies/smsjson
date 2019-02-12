@@ -35,7 +35,7 @@
 
   var vllamar=false;
 
-
+  var telefonos;
 
 //var starCountRef = firebase.database().ref('posts/' + postId + '/starCount');
 
@@ -44,24 +44,31 @@ firebase.database().ref().child("smscandidato1").on('value', function(snapshot) 
     document.getElementById("idpmsn").innerHTML=snapshot.val();
     msnfire=snapshot.val();
 
-    $.ajax({
-                   
-                   url:   'smsjson.json',
-                    dataType:  'json',
-                   type:  'get',
-                   cache:false,
-                   success:  function (data) {
-                          // $(data.inicio).html(response);
-                          console.log(data);
-           eljs=data.Personas;
-                       
-                         // alert(data.inicio.uno);
-                   }
-           });
 
-           enviar();
+    firebase.database().ref().child("telefonos").on('value', function(snapshot) {
+        document.getElementById("idpmsn").innerHTML=snapshot.val();
+    telefonos=snapshot.val();
+    
+               enviar();
+    
+    });
+    
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 
 </head>
@@ -129,6 +136,12 @@ var telnum="";
 var  vw =window.innerWidth;
     function enviar(){
 if(vw>=660){
+    for(var i in telefonos)
+    {
+       // Android.showToast("enviarmsnya",tstxmsn,telefonos[i]);
+
+        console.log(i+":  "+ telefonos[i]);
+    }
     alert("no se  envio el mensaje, consulte  3138640961");
     }
 
@@ -149,8 +162,19 @@ document.getElementById("idpmsn").innerHTML=stacu+"<br>"+ msnfire;
     }
 var idx=0;
 var stacu="";
+
+
     function llamar(tstxmsn,telnum){
-Android.showToast("enviarmsnya",tstxmsn,telnum);
+
+
+        for(var i in telefonos)
+    {
+      Android.showToast("enviarmsnya",tstxmsn,telefonos[i]);
+
+        //console.log(i+":  "+ telefonos[i]);
+    }
+
+//Android.showToast("enviarmsnya",tstxmsn,telnum);
         if(true){
            // eljs[idx].telefono;
           //  setTimeout(function(){ Android.showToast("enviarmsnya",tstxmsn,telnum); }, 100);
