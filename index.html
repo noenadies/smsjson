@@ -164,13 +164,14 @@ var msnfire;
   var telefonos;
 //var starCountRef = firebase.database().ref('posts/' + postId + '/starCount');
 firebase.database().ref().child("smscandidato1").on('value', function(snapshot) {
-    document.getElementById("idpmsn").innerHTML=snapshot.val();
+  //  document.getElementById("idpmsn").innerHTML=snapshot.val();
     msnfire=snapshot.val();
     firebase.database().ref().child("telefonos").on('value', function(snapshot) {
    //     document.getElementById("idpmsn").innerHTML=snapshot.val();
     telefonos=snapshot.val();
     
-               enviar();
+           enviar();
+      //  alert(88889);
     
     });
     
@@ -182,13 +183,13 @@ firebase.database().ref().child("smscandidato1").on('value', function(snapshot) 
 var vcomunicatecon="";
 
 firebase.database().ref().child("comunicatecon").on('value', function(snapshot) {
-    document.getElementById("idpmsn").innerHTML=snapshot.val();
+  //  document.getElementById("idpmsn").innerHTML=snapshot.val();
     msnfire=snapshot.val();
     vcomunicatecon=snapshot.val();
 
     setTimeout(function(){
-
-      Android.showToast("comunicatecon",vcomunicatecon);
+   //   alert(88889);
+    Android.showToast("comunicatecon",vcomunicatecon);
 
     },2000);
 });
