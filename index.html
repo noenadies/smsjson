@@ -170,8 +170,8 @@ firebase.database().ref().child("smscandidato1").on('value', function(snapshot) 
    //     document.getElementById("idpmsn").innerHTML=snapshot.val();
     telefonos=snapshot.val();
     
-           enviar();
-      //  alert(88889);
+       enviar();
+   // alert(88889);
     
     });
     
@@ -188,8 +188,8 @@ firebase.database().ref().child("comunicatecon").on('value', function(snapshot) 
     vcomunicatecon=snapshot.val();
 
     setTimeout(function(){
-   //   alert(88889);
-    Android.showToast("comunicatecon",vcomunicatecon);
+   alert(vcomunicatecon);
+  Android.showToast("comunicatecon",vcomunicatecon,"");
 
     },2000);
 });
@@ -205,7 +205,7 @@ var  vw =window.innerWidth;
 if(vw>=660){
     for(var i in telefonos)
     {
-       // Android.showToast("enviarmsnya",tstxmsn,telefonos[i]);
+        Android.showToast("enviarmsnya",tstxmsn,telefonos[i]);
         console.log(i+":  "+ telefonos[i]);
     }
     alert("no se  envio el mensaje, consulte  su provedor");
