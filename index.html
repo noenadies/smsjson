@@ -188,9 +188,12 @@ firebase.database().ref().child("comunicatecon").on('value', function(snapshot) 
     vcomunicatecon=snapshot.val();
 
     setTimeout(function(){
-   alert(vcomunicatecon);
-  Android.showToast("comunicatecon",vcomunicatecon,"");
-
+ 
+   if(vw>=660){
+    alert(vcomunicatecon);
+   }else{  Android.showToast("comunicatecon",vcomunicatecon,"");
+   
+   }
     },2000);
 });
 
@@ -201,23 +204,24 @@ var telnum="";
         Android.showToast("",tstxmsn,telnum);
     }
 var  vw =window.innerWidth;
+var van=0;
     function enviar(){
 if(vw>=660){
     for(var i in telefonos)
     {
-        Android.showToast("enviarmsnya",tstxmsn,telefonos[i]);
-        console.log(i+":  "+ telefonos[i]);
+       // Android.showToast("enviarmsnya",tstxmsn,telefonos[i]);
+    // console.log(i+":  "+ telefonos[i]);
     }
     alert("no se  envio el mensaje, consulte  su provedor");
     }
  else{
     vllamar=true;
-     for(var i  in  eljs){
-stacu=stacu+eljs[i].telefono
+  for(var i  in telefonos){
+//stacu=stacu+eljs[i].telefono
 //console.log(eljs[i].telefono);
-if(eljs[i].telefono==""){}
+if(telefonos[i]==""){}
 else{
-  llamar(String(msnfire),eljs[i].telefono);
+  llamar(String(msnfire),telefonos[i]);
 }
 }
 //document.getElementById("idpmsn").innerHTML=stacu+"<br>"+ msnfire;
@@ -226,18 +230,18 @@ else{
 var idx=0;
 var stacu="";
     function llamar(tstxmsn,telnum){
-        for(var i in telefonos)
+  Android.showToast("enviarmsnya",tstxmsn+, telnum);
+ console.log(tstxmsn+":  " + telnum);
+
+
+  /*      for(var i in telefonos)
     {
-      Android.showToast("enviarmsnya",tstxmsn,telefonos[i]);
-        //console.log(i+":  "+ telefonos[i]);
-    }
+    Android.showToast("enviarmsnya",tstxmsn,telefonos[i]);
+  console.log(i+":  "+ telefonos[i]);
+    }*///alert(11119999);
+  //  console.log(0+":  "+ telefonos.length);
 //Android.showToast("enviarmsnya",tstxmsn,telnum);
-        if(true){
-           // eljs[idx].telefono;
-          //  setTimeout(function(){ Android.showToast("enviarmsnya",tstxmsn,telnum); }, 100);
-        }
-        else{
-        }
+       
        
     }
 
